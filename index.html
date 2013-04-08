@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Coloris</title>
+    <link rel="stylesheet" href="ColorisFonts.css" />
+    <link rel="stylesheet" href="Coloris.css" />
+    <script src="lib/modernizr.js"></script>
+  </head>
+  <body>
+    <div id="game">
+
+      <div id="canvasDiv"></div>
+      
+      <div id="splashScreen" class="screen">
+        <h1 class="logo"><span class="logo0">C</span><span class="logo1">o</span><span class="logo2">l</span><span class="logo3">o</span><span class="logo4">r</span><span class="logo5">i</span><span class="logo6">s</span></h1>
+        <div class="progress">
+          <div class="indicator">
+          </div>
+        </div>
+      </div>
+
+      <div id="mainMenu" class="screen">
+        <h2 class="logo"><span class="logo0">C</span><span class="logo1">o</span><span class="logo2">l</span><span class="logo3">o</span><span class="logo4">r</span><span class="logo5">i</span><span class="logo6">s</span></h2>
+        <menu>
+          <li><button type="button" name="colorisScreen">Play</button></li>
+          <li><button type="button" name="settingsScreen">Settings</button></li>
+          <li><button type="button" name="aboutScreen">About</button></li>
+        </menu>
+      </div>
+
+      <div id="colorisScreen" class="screen">
+        <nav>
+          <button type="button" name="mainMenu">Exit</button>
+        </nav>
+      </div>
+
+      <div id="settingsScreen" class="screen">
+        <h2 class="logo"><span class="logo0">C</span><span class="logo1">o</span><span class="logo2">l</span><span class="logo3">o</span><span class="logo4">r</span><span class="logo5">i</span><span class="logo6">s</span></h2>
+        <fieldset>
+          <legend>Sound</legend>
+          <p>
+            <label for="enableSound">Enable sound</label>
+            <input type="checkbox" id="enableSound" name="enableSound" />
+          </p>
+          <p>
+            <label for="enableMusic">Enable music</label>
+            <input type="checkbox" id="enableMusic" name="enableMusic" />
+          </p>
+        </fieldset>
+        <nav>
+          <button type="button" name="saveSettings">OK</button>
+          <button type="button" name="cancelSettings">Cancel</button>
+        </nav>
+      </div>
+
+      <div id="aboutScreen" class="screen">
+        <h2 class="logo"><span class="logo0">C</span><span class="logo1">o</span><span class="logo2">l</span><span class="logo3">o</span><span class="logo4">r</span><span class="logo5">i</span><span class="logo6">s</span></h2>
+        <p>
+          As tetrominoes fall, rotate them and shift them laterally. When you form a contiguous band of one color extending from one side of the well to the other (not necessarily in a straight line), it will clear and any blocks above it will fall, leaving you room to place more pieces.
+        </p>
+        <menu>
+          <li><button type="button" name="creditScreen">Credits</button></li>
+          <li><button type="button" name="mainMenu">OK</button></li>
+        </menu>
+        <nav>
+        </nav>
+      </div>
+      
+      <div id="creditScreen" class="screen">
+        <h2 class="logo"><span class="logo0">C</span><span class="logo1">o</span><span class="logo2">l</span><span class="logo3">o</span><span class="logo4">r</span><span class="logo5">i</span><span class="logo6">s</span></h2>
+        <p>
+          Copyright © 2013 by David M. Anderson
+        </p>
+        <p>
+          Developed for <br />
+          <em>Mobile Integration, Analytics and Optimization of Games</em> <br />
+          Course Three of <br />
+          Game Development for Mobile and the Web <br />
+          UW Professional and Continuing Education
+        </p>
+        <p>
+          Game concept: Alexey Pajitnov and Christopher Stewart.
+        </p>
+        <p>
+          Music:
+          <ul>
+            <li>Dj Daddio [1]</li>
+            <li>Eric Stemshorn (The Instru-mentals) [1]</li>
+            <li>Armando Garcia [1]</li>
+            <li>MegaPixel Music [1]</li>
+            <li>DJ Triplestar [1]</li>
+            <li>DJ Sob-Style [1]</li>
+            <li>David Stoltz [1]</li>
+            <li>headsetmusic.de [1]</li>
+          </ul>
+        </p>
+        <p>
+          Sound effects:
+          <ul>
+            <li>acclivity [2]</li>
+            <li>Speedenza [2]</li>
+            <li>andre.rocha.nascimento [2]</li>
+            <li>grunz [2]</li>
+            <li>spazzo_1493 [2]</li>
+          </ul>
+        </p>
+        <p>
+          Photographs:
+          <ul>
+            <li>Lynn Suckow [3]</li>
+            <li>Finetooth [3]</li>
+            <li>Trodel [4]</li>
+            <li>sborisov [5]</li>
+            <li>Roger Wollstadt [6]</li>
+            <li>Katsoura [3]</li>
+            <li>Manop [3]</li>
+            <li>vgm8383 [4]</li>
+            <li>Ch.M [3]</li>
+            <li>Daniel Schwen [3]</li>
+          </ul>
+        </p>
+        <p>
+          <ul>
+            <li>[1] www.soundclick.com</li>
+            <li>[2] www.freesound.org</li>
+            <li>[3] commons.wikimedia.org</li>
+            <li>[4] www.fotopedia.com</li>
+            <li>[5] www.layoverguide.com</li>
+            <li>[6] www.flickr.com</li>
+          </ul>
+          Consult these sites for license restrictions. (All are believed to be Creative Commons with restrictions including Authorization, Share-Alike, and Non-Commercial.)
+        </p>
+      </div>
+      
+    </div>
+
+    <script src="Loader.js"></script>
+  </body>
+</html>

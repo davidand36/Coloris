@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Text';
+    src: url('fonts/capriola-regular-webfont.eot');
+    src: url('fonts/capriola-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/capriola-regular-webfont.woff') format('woff'),
+         url('fonts/capriola-regular-webfont.ttf') format('truetype'),
+         url('fonts/capriola-regular-webfont.svg#CapriolaRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Logo';
+    src: url('fonts/pressstart2p-regular-webfont.eot');
+    src: url('fonts/pressstart2p-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/pressstart2p-regular-webfont.woff') format('woff'),
+         url('fonts/pressstart2p-regular-webfont.ttf') format('truetype'),
+         url('fonts/pressstart2p-regular-webfont.svg#PressStart2PRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
