@@ -33,6 +33,13 @@ app.screens[ "mainMenu" ] =
          }
 
     //=========================================================================
+
+         function resize( )
+         {
+             app.background.drawMain( );
+         }
+
+    //=========================================================================
          
          function setInputHandler( )
          {
@@ -61,7 +68,8 @@ app.screens[ "mainMenu" ] =
 
          return {
              run: run,
-             stop: stop
+             stop: stop,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

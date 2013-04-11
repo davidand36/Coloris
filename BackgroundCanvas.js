@@ -41,12 +41,7 @@ app.background =
 
          function drawMain( rect )
          {
-             if ( ! mainCtx )
-             {
-                 mainCanvas = εδ.makeCanvas( 'canvasDiv' );
-                 mainCtx = mainCanvas.getContext( '2d' );
-             }
-
+             findMainCtx( );
              if ( ! mainBgCanvas )
              {
                  makeMainBg( );
@@ -59,6 +54,17 @@ app.background =
              mainCtx.drawImage( mainBgCanvas,
                                 rect.x, rect.y, rect.width, rect.height,
                                 rect.x, rect.y, rect.width, rect.height );
+         }
+
+    //-------------------------------------------------------------------------
+
+         function findMainCtx( )
+         {
+             if ( ! mainCtx )
+             {
+                 mainCanvas = εδ.makeCanvas( 'canvasDiv' );
+                 mainCtx = mainCanvas.getContext( '2d' );
+             }
          }
 
     //-------------------------------------------------------------------------
@@ -82,7 +88,7 @@ app.background =
          function loadLevel( level, callback, forceReload )
          {
              var i = level % numLevelBgs,
-                 directory = 'images/800x480/',
+                 directory = 'images/800x480/', //!!!
                  name = levelBgNames[ i ],
                  image;
              if ( levelBgImages[ i ] && (! forceReload) )
@@ -108,16 +114,43 @@ app.background =
          {
              var i = level % numLevelBgs,
                  image = levelBgImages[ i ],
-                 srcRect, destRect;
+                 srcRect, destRect,
+                 cw, ch, iw, ih,
+                 wRatio, hRatio, off;
 
-             if ( ! image  )
+             if ( (! mainCtx) || (! image) )
                  return;
+
+             cw = mainCanvas.width;
+             ch = mainCanvas.height;
+             iw = image.width;
+             ih = image.height;
              
-             destRect = rect ||
-                 { x: 0, y: 0,
-                   width: mainCanvas.width,
-                   height: mainCanvas.height };
-             srcRect = destRect;
+             destRect = rect || { x: 0, y: 0, width: cw, height: ch };
+
+             //Scale and offset so the image fills the canvas,
+             // the centers line up, and the source aspect ratio is preserved.
+             wRatio = iw / cw;
+             hRatio = ih / ch;
+             if ( wRatio < hRatio )
+             {
+                 off = (ih / 2)  -  wRatio * (ch / 2);
+                 srcRect = { x: wRatio * destRect.x,
+                             y: off  +  wRatio * destRect.y,
+                             width: wRatio * destRect.width,
+                             height: wRatio * destRect.height
+                           };
+             }
+             else
+             {
+                 off = (iw / 2)  -  hRatio * (cw / 2);
+                 srcRect = { x: off  +  hRatio * destRect.x,
+                             y: hRatio * destRect.y,
+                             width: hRatio * destRect.width,
+                             height: hRatio * destRect.height
+                           };
+             }
+             
              mainCtx.drawImage( image,
                                 srcRect.x, srcRect.y,
                                 srcRect.width, srcRect.height,
@@ -127,10 +160,21 @@ app.background =
 
     //=========================================================================
 
+         function resize( newDims )
+         {
+             mainCtx = null;
+             findMainCtx( );
+             mainBgCanvas = null;
+             makeMainBg( );
+         }
+
+    //=========================================================================
+
          return {
              drawMain: drawMain,
              loadLevel: loadLevel,
-             drawLevel: drawLevel
+             drawLevel: drawLevel,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

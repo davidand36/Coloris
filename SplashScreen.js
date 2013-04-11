@@ -46,6 +46,13 @@ app.screens[ "splashScreen" ] =
 
     //=========================================================================
 
+         function resize( )
+         {
+             app.background.drawMain( );
+         }
+
+    //=========================================================================
+
          function setSplashDone( )
          {
              splashDone = true;
@@ -92,7 +99,8 @@ app.screens[ "splashScreen" ] =
 
          return {
              run: run,
-             stop: stop
+             stop: stop,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

@@ -35,6 +35,13 @@ app.screens[ "settingsScreen" ] =
 
     //=========================================================================
 
+         function resize( )
+         {
+             app.background.drawMain( );
+         }
+
+    //=========================================================================
+
          function setFormValues( )
          {
              $("#enableSound").prop( "checked", app.settings.enableSound );
@@ -82,7 +89,8 @@ app.screens[ "settingsScreen" ] =
 
          return {
              run: run,
-             stop: stop
+             stop: stop,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

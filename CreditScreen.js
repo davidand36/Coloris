@@ -33,6 +33,13 @@ app.screens[ "creditScreen" ] =
          }
 
     //=========================================================================
+
+         function resize( )
+         {
+             app.background.drawMain( );
+         }
+
+    //=========================================================================
          
          function setInputHandler( )
          {
@@ -56,7 +63,8 @@ app.screens[ "creditScreen" ] =
 
          return {
              run: run,
-             stop: stop
+             stop: stop,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

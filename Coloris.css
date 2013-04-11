@@ -31,12 +31,28 @@ body
     height: 24em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1em;
     background-color: rgb( 42, 4, 74 );
     color: rgb( 160, 197, 95 );
     font-family: "Text";
 }
 
+@media screen and (max-width: 800px)
+{
+    #game
+    {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@media screen and (max-width: 600px)
+{
+    #game
+    {
+        font-size: 16px;
+    }
+}
+    
 #canvasDiv
 {
     position: absolute;

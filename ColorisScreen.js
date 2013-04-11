@@ -29,6 +29,7 @@ app.screens[ "colorisScreen" ] =
              scheduledActions,
              levels,
              level,
+             touchData,
              collapseData,
              score,
              gameOverDelay = 5.0;
@@ -59,6 +60,13 @@ app.screens[ "colorisScreen" ] =
              clearEventHandlers( );
              εδ.gameLoop.setLoopFunction( null );
              εδ.audio.stopAll( );
+         }
+
+    //=========================================================================
+
+         function resize( )
+         {
+             view.resize( );
          }
 
     //=========================================================================
@@ -117,6 +125,11 @@ app.screens[ "colorisScreen" ] =
              $(document).keydown( handleKeyEvent );
              $(document).keyup( handleKeyEvent );
 
+             if ( Modernizr.touch || window.phantomLimb )
+             {
+                 $("#game").on( "touchstart", handleTouchStart );
+             }
+
              inputQueue = [];
          }
 
@@ -125,6 +138,7 @@ app.screens[ "colorisScreen" ] =
          function clearEventHandlers( )
          {
              $(document).off( 'keydown keyup' );
+             $('#game').off( 'touchstart touchmove' );
          }
 
     //-------------------------------------------------------------------------
@@ -139,6 +153,89 @@ app.screens[ "colorisScreen" ] =
                  inputQueue.push( { action: action, status: status } );
              }
              return false;
+         }
+
+    //-------------------------------------------------------------------------
+
+         function handleTouchStart( event )
+         {
+             var pos = εδ.input.getEventPos( event.touches[0], $("#game") ),
+                 now = gameTime.getSeconds();
+
+             touchData = { startPos: pos,
+                           startTime: now,
+                           lastPos: pos,
+                           lastUpdate: now };
+             
+             $("#game").on( "touchmove", handleTouchMove );
+             $("#game").on( "touchend", handleTouchEnd );
+         }
+
+    //-------------------------------------------------------------------------
+
+         function handleTouchMove( event )
+         {
+             var pos = εδ.input.getEventPos( event.changedTouches[0],
+                                             $("#game") ),
+                 now = gameTime.getSeconds(),
+                 movement = εδ.vector.subtract( pos, touchData.lastPos ),
+                 thresholdLengthSqr = 100;
+
+             touchData.lastPos = pos;
+             touchData.lastUpdate = now;
+
+             if ( εδ.vector.lengthSqr( movement ) > thresholdLengthSqr )
+             {
+                 if ( Math.abs( movement.x ) > Math.abs( movement.y ) )
+                 {
+                     if ( movement.x < 0 )
+                     {
+                         scheduleAction( 'shift left', 0 );
+                     }
+                     else
+                     {
+                         scheduleAction( 'shift right', 0 );
+                     }
+                 }
+                 else
+                 {
+                     if ( movement.y > 0 )
+                     {
+                         scheduleAction( 'drop', 0 );
+                     }
+                 }
+             }
+
+             event.preventDefault( );
+         }
+
+    //-------------------------------------------------------------------------
+
+         function handleTouchEnd( event )
+         {
+             var pos = εδ.input.getEventPos( event.changedTouches[0],
+                                             $("#game") ),
+                 movement = εδ.vector.subtract( pos, touchData.startPos ),
+                 thresholdLengthSqr = 2500;
+
+             $('#game').off( 'touchmove touchend' );
+             preventTouchScroll( );
+
+             if ( εδ.vector.lengthSqr( movement ) < thresholdLengthSqr )
+             {
+                 scheduleAction( 'rotate counter-clockwise', 0 );
+             }
+         }
+
+    //-------------------------------------------------------------------------
+
+         function preventTouchScroll( )
+         {
+             $('#game').on( 'touchmove',
+                             function( event )
+                             {
+                                 event.preventDefault( );
+                             } );
          }
 
     //=========================================================================
@@ -205,7 +302,7 @@ app.screens[ "colorisScreen" ] =
 
              view.update( now );
 
-             timeLoop( now ); //development only
+//             timeLoop( now ); //development only
          }
 
     //-------------------------------------------------------------------------
@@ -613,7 +710,8 @@ app.screens[ "colorisScreen" ] =
 
          return {
              run: run,
-             stop: stop
+             stop: stop,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

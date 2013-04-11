@@ -33,6 +33,13 @@ app.screens[ "aboutScreen" ] =
          }
 
     //=========================================================================
+
+         function resize( )
+         {
+             app.background.drawMain( );
+         }
+
+    //=========================================================================
          
          function setInputHandler( )
          {
@@ -59,7 +66,8 @@ app.screens[ "aboutScreen" ] =
 
          return {
              run: run,
-             stop: stop
+             stop: stop,
+             resize: resize
          };
          
     //-------------------------------------------------------------------------

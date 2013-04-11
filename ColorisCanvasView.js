@@ -85,6 +85,13 @@ app.coloris.view =
 
     //=========================================================================
 
+         function resize( )
+         {
+             setup( model, { showGhostPiece: showGhostPiece } );
+         }
+
+    //=========================================================================
+
          function cellLocToPos( loc )
          {
              //Loc has y increasing upward
@@ -385,6 +392,7 @@ app.coloris.view =
 
          return {
              setup: setup,
+             resize: resize,
              newGame: newGame,
              update: update,
              startClear: startClear,

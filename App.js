@@ -21,7 +21,48 @@ app.start = function( )
 {
     εδ.storage.setPrefix( "Coloris_" );
     app.settings = εδ.storage.get( "settings" ) || app.settings || { };
+    setupResizeHandler( );
     app.showScreen( "splashScreen", app.loader.getResourceLoadProgress );
+
+    //-------------------------------------------------------------------------
+
+    function setupResizeHandler( )
+    {
+        var maxWidth = 800,
+            maxHeight = 800,
+            isMobile = ('ontouchstart' in document);
+
+        //.....................................................................
+
+        function handleResize( )
+        {
+            var w = window.innerWidth,
+                h = window.innerHeight,
+                newDims;
+
+            if ( (w <= maxWidth) && isMobile )
+            {
+                //This is supposed to hide the address bar on some mobile devices
+                $('html').css( { height: '200%' } );
+                window.scrollTo( 0, 1 );
+                h = window.innerHeight;
+            }
+            w = Math.min( w, maxWidth );
+            h = Math.min( h - 5, maxHeight );
+            newDims = { width: w,
+                        height: h
+                      };
+            $('#game').css( newDims );
+            app.resize( newDims );
+        }
+
+        //.....................................................................
+
+        $(window).on( 'resize', handleResize );
+        $(window).on( 'orientationchange', handleResize );
+
+        handleResize( );
+    }
 };
 
 //=============================================================================
@@ -42,6 +83,36 @@ app.showScreen = function( screenId )
     newScreenDiv.addClass( "active" );
     newScreen.run.apply( newScreen, args );
 };
+
+//-----------------------------------------------------------------------------
+
+app.getActiveScreen = function( )
+{
+    var activeScreenDiv = $("#game .screen.active"),
+        activeScreenId = $(activeScreenDiv).attr( "id" ),
+        activeScreen = app.screens[ activeScreenId ];
+    if ( activeScreenDiv.length > 0 )
+        return activeScreen;
+    else
+        return null;
+}
+
+//=============================================================================
+
+app.resize = function( newDims )
+{
+    var activeScreen = app.getActiveScreen();
+
+    $('#canvasDiv canvas').remove( );
+    app.background.resize( ); //recreates the canvas
+    if ( activeScreen )
+    {
+        if ( activeScreen.resize )
+        {
+            activeScreen.resize( newDims );
+        }
+    }
+}
 
 
 //*****************************************************************************
