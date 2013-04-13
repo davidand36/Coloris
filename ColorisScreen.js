@@ -50,7 +50,7 @@ app.screens[ "colorisScreen" ] =
                  audio.play( 'game_music' );
              }
              setEventHandlers( );
-             εδ.gameLoop.setLoopFunction( update );
+             εδ.displayLoop.setUpdateFunction( update );
          }
          
     //=========================================================================
@@ -58,7 +58,7 @@ app.screens[ "colorisScreen" ] =
          function stop( )
          {
              clearEventHandlers( );
-             εδ.gameLoop.setLoopFunction( null );
+             εδ.displayLoop.setUpdateFunction( null );
              εδ.audio.stopAll( );
          }
 

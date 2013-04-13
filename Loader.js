@@ -34,7 +34,7 @@ app.loader =
                      "εδ/Vector.js",
                      "εδ/Random.js",
                      "εδ/Timer.js",
-                     "εδ/GameLoop.js",
+                     "εδ/DisplayLoop.js",
                      "lib/keycode.js",
                      // "lib/phantom-limb.js", //testing only (emulate touch)
                      "εδ/Input.js",
