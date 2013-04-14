@@ -26,6 +26,8 @@ app.loader =
 
          function run( )
          {
+             var isIE = navigator.appName.match( /Explorer/ );
+
              var firstScripts =
                  [
                      "εδ/ErrorHandler.js",
@@ -68,12 +70,40 @@ app.loader =
              Modernizr.load(
                  [
                      {
-                         test: navigator.appName.match( /Explorer/ ),
-                         yep: "lib/jquery.min.js",
-                         nope: "lib/zepto.min.js"
+                         test: isIE,
+                         yep: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+                         nope: '//cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js',
+                         complete: function( )
+                         {
+                             if ( (! window.jQuery) && (! window.Zepto) )
+                             {
+                                 Modernizr.load( 
+                                     {
+                                         test: isIE,
+                                         yep: 'lib/jquery.min.js',
+                                         nope: 'lib/zepto.min.js'
+                                     } );
+                             }
+                         }
                      },
                      {
-                         load: "lib/underscore-min.js"
+                         load:
+                         [
+                             '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js',
+                         ],
+                         complete: function( )
+                         {
+                             var toLoad = [];
+                             if ( ! window._ )
+                                 toLoad.push( 'lib/underscore-min.js' );
+                             if ( toLoad.length > 0 )
+                             {
+                                 Modernizr.load(
+                                     {
+                                         load: toLoad
+                                     } );
+                             }
+                         }
                      },
                      {
                          load: firstScripts,
