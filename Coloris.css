@@ -45,11 +45,19 @@ body
     }
 }
 
-@media screen and (max-width: 600px)
+@media screen and (max-width: 750px)
 {
     #game
     {
         font-size: 16px;
+    }
+}
+    
+@media screen and (max-width: 600px)
+{
+    #game
+    {
+        font-size: 14px;
     }
 }
     
@@ -86,6 +94,14 @@ h1.logo
     font-size: 5em;
     margin-top: 1em;
     margin-bottom: 1em;
+}
+
+@media screen and (max-width: 550px)
+{
+    h1.logo
+    {
+        font-size: 3.5em;
+    }
 }
 
 h2.logo
@@ -171,6 +187,14 @@ button:active
     background-color: rgb( 122, 179, 23 );
     height: 100%;
     width: 0%;
+}
+
+@media screen and (max-width: 400px)
+{
+    .progress
+    {
+        width: 20em;
+    }
 }
 
 

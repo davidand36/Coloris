@@ -29,8 +29,7 @@ app.start = function( )
     function setupResizeHandler( )
     {
         var maxWidth = 800,
-            maxHeight = 800,
-            isMobile = ('ontouchstart' in document);
+            maxHeight = 800;
 
         //.....................................................................
 
@@ -40,15 +39,8 @@ app.start = function( )
                 h = window.innerHeight,
                 newDims;
 
-            if ( (w <= maxWidth) && isMobile )
-            {
-                //This is supposed to hide the address bar on some mobile devices
-                $('html').css( { height: '200%' } );
-                window.scrollTo( 0, 1 );
-                h = window.innerHeight;
-            }
-            w = Math.min( w, maxWidth );
-            h = Math.min( h - 5, maxHeight );
+            w = Math.min( w - 4, maxWidth );
+            h = Math.min( h - 4, maxHeight );
             newDims = { width: w,
                         height: h
                       };

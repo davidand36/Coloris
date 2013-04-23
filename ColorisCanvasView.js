@@ -53,15 +53,38 @@ app.coloris.view =
 
          function setupWell( )
          {
-             var w, h;
+             var w, h, top;
+             if ( canvas.width < 450 )
+             {
+                 w = canvas.width * 0.9;
+                 h = Math.min( canvas.height * 0.9, canvas.height - 43 );
+             }
+             else if ( canvas.width < 700 )
+             {
+                 w = canvas.width * 0.9;
+                 h = Math.min( canvas.height * 0.9, canvas.height - 48 );
+             }
+             else
+             {
+                 w = canvas.width * 0.9;
+                 h = canvas.height * 0.9;
+             }
              wellDims = model.getVisibleWellDimensions( );
-             cellSize = Math.min( (canvas.width * 0.9) / wellDims.width,
-                                  (canvas.height * 0.9) / wellDims.height );
+             cellSize = Math.min( w / wellDims.width,
+                                  h / wellDims.height );
              cellSize = Math.round( cellSize );
              w = cellSize * wellDims.width;
              h = cellSize * wellDims.height;
+             if ( canvas.width < 700 )
+             {
+                 top = canvas.height - h - 6;
+             }
+             else
+             {
+                 top = Math.round( (canvas.height - h) / 2 );
+             }
              wellRect = { x: Math.round( (canvas.width - w) / 2 ),
-                          y: Math.round( (canvas.height - h) / 2 ),
+                          y: top,
                           width: w,
                           height: h };
              wellOrigin = { x: wellRect.x,
@@ -72,11 +95,28 @@ app.coloris.view =
 
          function setupDisplayAreas( )
          {
-             scoreArea = { x: 10, y: 10,
-                           width: wellRect.x - 20,
-                           height: 90,
-                           textSize: '20px',
-                           lineHeight: 30 };
+             if ( canvas.width < 450 )
+             {
+                 scoreArea = { x: 6, y: 6,
+                               width: canvas.width - 12,
+                               height: 25,
+                               textSize: '15px' };
+             }
+             else if ( canvas.width < 700 )
+             {
+                 scoreArea = { x: 6, y: 6,
+                               width: canvas.width - 12,
+                               height: 30,
+                               textSize: '20px' };
+             }
+             else
+             {
+                 scoreArea = { x: 10, y: 10,
+                               width: wellRect.x - 20,
+                               height: 90,
+                               textSize: '20px',
+                               lineHeight: 30 };
+             }
              gameOverArea = { x: wellRect.x + wellRect.width / 2,
                               y: wellRect.y + wellRect.height / 2,
                               textSize: '45px',
@@ -335,9 +375,15 @@ app.coloris.view =
              ctx.textBaseline = 'top';
 
              ctx.fillText( 'Level: ' + level, x, y );
-             y += scoreArea.lineHeight;
+             if ( scoreArea.lineHeight )
+                 y += scoreArea.lineHeight;
+             else
+                 x += scoreArea.width / 3;
              ctx.fillText( 'Pieces: ' + score.pieces, x, y );
-             y += scoreArea.lineHeight;
+             if ( scoreArea.lineHeight )
+                 y += scoreArea.lineHeight;
+             else
+                 x += scoreArea.width / 3;
              ctx.fillText( 'Clears: ' + score.clears, x, y );
 
              ctx.restore( );
