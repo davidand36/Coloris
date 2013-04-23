@@ -26,7 +26,9 @@ app.loader =
 
          function run( )
          {
-             var isIE = navigator.appName.match( /Explorer/ );
+             var useZepto = ('__proto__' in {}),
+                 zjLoad,
+                 libsLoad;
 
              var firstScripts =
                  [
@@ -67,25 +69,27 @@ app.loader =
              numResourcesToLoad = secondLoad.length + 1; //+1 for 1st level bg
              numResourcesLoaded = 0;
 
-             Modernizr.load(
-                 [
+             if ( navigator.onLine )
+             {
+                 zjLoad = //Zepto or jQuery, ideally from CDN
                      {
-                         test: isIE,
-                         yep: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js',
-                         nope: '//cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js',
+                         test: useZepto,
+                         yep: '//cdnjs.cloudflare.com/ajax/libs/zepto/1.0/zepto.min.js',
+                         nope: '//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js',
                          complete: function( )
                          {
                              if ( (! window.jQuery) && (! window.Zepto) )
                              {
                                  Modernizr.load( 
                                      {
-                                         test: isIE,
-                                         yep: 'lib/jquery.min.js',
-                                         nope: 'lib/zepto.min.js'
+                                         test: useZepto,
+                                         yep: 'lib/zepto.min.js',
+                                         nope: 'lib/jquery.min.js'
                                      } );
                              }
                          }
-                     },
+                     };
+                 libsLoad = //Other libs available via CDN
                      {
                          load:
                          [
@@ -104,7 +108,26 @@ app.loader =
                                      } );
                              }
                          }
-                     },
+                     };
+             }
+             else //Offline; skip CDNs
+             {
+                 zjLoad =
+                     {
+                         test: useZepto,
+                         yep: 'lib/zepto.min.js',
+                         nope: 'lib/jquery.min.js'
+                     };
+                 libsLoad =
+                     [
+                         'lib/underscore-min.js'
+                     ];
+             }
+             
+             Modernizr.load(
+                 [
+                     zjLoad,
+                     libsLoad,
                      {
                          load: firstScripts,
                          complete: function()
