@@ -1,0 +1,102 @@
+CACHE MANIFEST
+# Coloris
+# 22Apr2013 22:43
+
+CACHE:
+AboutScreen.js
+App.js
+BackgroundCanvas.js
+ColorisAudio.js
+ColorisCanvasView.js
+Coloris.css
+ColorisFonts.css
+ColorisModel.js
+ColorisScreen.js
+CreditScreen.js
+Loader.js
+MainMenu.js
+Settings.js
+SettingsScreen.js
+SplashScreen.js
+Tetrominoes.js
+εδ/Audio.js
+εδ/CanvasGraphics.js
+εδ/DisplayLoop.js
+εδ/ErrorHandler.js
+εδ/Input.js
+εδ/Math.js
+εδ/Outline.js
+εδ/Random.js
+εδ/Storage.js
+εδ/Timer.js
+εδ/Util.js
+εδ/Vector.js
+lib/jquery.min.js
+lib/keycode.js
+lib/modernizr.js
+lib/phantom-limb.js
+lib/underscore-min.js
+lib/zepto.min.js
+fonts/capriola-regular-webfont.eot
+fonts/capriola-regular-webfont.svg
+fonts/capriola-regular-webfont.ttf
+fonts/capriola-regular-webfont.woff
+fonts/pressstart2p-regular-webfont.eot
+fonts/pressstart2p-regular-webfont.svg
+fonts/pressstart2p-regular-webfont.ttf
+fonts/pressstart2p-regular-webfont.woff
+audio/109662__grunz__success.mp3
+audio/109662__grunz__success.ogg
+audio/162473__kastenfrosch__successful.mp3
+audio/162473__kastenfrosch__successful.ogg
+audio/167929__speedenza__whoosh-puff.mp3
+audio/167929__speedenza__whoosh-puff.ogg
+audio/25885__acclivity__beeprising.mp3
+audio/25885__acclivity__beeprising.ogg
+audio/34208__acclivity__tongueclick1.mp3
+audio/34208__acclivity__tongueclick1.ogg
+audio/51462__andre-rocha-nascimento__basket-ball-03-drop-wav.mp3
+audio/51462__andre-rocha-nascimento__basket-ball-03-drop-wav.ogg
+audio/73560__stanestane__blip.mp3
+audio/73560__stanestane__blip.ogg
+audio/76376__spazzo-1493__game-over.mp3
+audio/76376__spazzo-1493__game-over.ogg
+audio/Silence10sec.mp3
+audio/Silence10sec.ogg
+images/800x480/01-louvain-la-neuve-17-01-2002.jpg
+images/800x480/Berlinermauer.jpg
+images/800x480/Central_Park_at_Dusk_New_York_City.jpg
+images/800x480/EastBerlin_PotsdamerPlatz.jpg
+images/800x480/flickr-3065932904-original.jpg
+images/800x480/Istanbul.jpg
+images/800x480/Monmouth_oregon_main_street.jpg
+images/800x480/Munich-skyline_layover.jpg
+images/800x480/Old_cathedral_managua.jpg
+images/800x480/Palouse_hills_northeast_of_Walla_Walla.jpg
+images/800x480/Seattle_4.jpg
+images/800x480/Skyline_New_York_City_New_York_from_Rockefeller_Center_at_night.jpg
+images/800x480/VEISHEA2006.jpg
+images/800x480/Vue_sur_Managua_et_le_lagon.jpg
+
+NETWORK:
+*
+http://*
+https://*
+
+FALLBACK:
+audio/djdaddio+pinballhd.ogg  audio/Silence10sec.ogg
+audio/djdaddio+pinballhd.mp3  audio/Silence10sec.mp3
+audio/djsobstyle+tetrisrmx.ogg  audio/Silence10sec.ogg
+audio/djsobstyle+tetrisrmx.mp3  audio/Silence10sec.mp3
+audio/djstoltz+hyruletemplessbm.ogg  audio/Silence10sec.ogg
+audio/djstoltz+hyruletemplessbm.mp3  audio/Silence10sec.mp3
+audio/djtriplestar+tetrisjumpstyleremix.ogg  audio/Silence10sec.ogg
+audio/djtriplestar+tetrisjumpstyleremix.mp3  audio/Silence10sec.mp3
+audio/megapixelmusic+cheapnessisasense.ogg  audio/Silence10sec.ogg
+audio/megapixelmusic+cheapnessisasense.mp3  audio/Silence10sec.mp3
+audio/panto+tetrisrmx.ogg  audio/Silence10sec.ogg
+audio/panto+tetrisrmx.mp3  audio/Silence10sec.mp3
+audio/theinstrumentals+8bitloserinstrumental.ogg  audio/Silence10sec.ogg
+audio/theinstrumentals+8bitloserinstrumental.mp3  audio/Silence10sec.mp3
+audio/zxspectrumtribute+ledstormremi.ogg  audio/Silence10sec.ogg
+audio/zxspectrumtribute+ledstormremi.mp3  audio/Silence10sec.mp3
