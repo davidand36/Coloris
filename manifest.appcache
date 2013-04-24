@@ -1,6 +1,6 @@
 CACHE MANIFEST
 # Coloris
-# 22Apr2013 22:43
+# 24Apr2013 11:24
 
 CACHE:
 AboutScreen.js
@@ -78,11 +78,6 @@ images/800x480/Skyline_New_York_City_New_York_from_Rockefeller_Center_at_night.j
 images/800x480/VEISHEA2006.jpg
 images/800x480/Vue_sur_Managua_et_le_lagon.jpg
 
-NETWORK:
-*
-http://*
-https://*
-
 FALLBACK:
 audio/djdaddio+pinballhd.ogg  audio/Silence10sec.ogg
 audio/djdaddio+pinballhd.mp3  audio/Silence10sec.mp3
@@ -100,3 +95,8 @@ audio/theinstrumentals+8bitloserinstrumental.ogg  audio/Silence10sec.ogg
 audio/theinstrumentals+8bitloserinstrumental.mp3  audio/Silence10sec.mp3
 audio/zxspectrumtribute+ledstormremi.ogg  audio/Silence10sec.ogg
 audio/zxspectrumtribute+ledstormremi.mp3  audio/Silence10sec.mp3
+
+NETWORK:
+*
+http://*
+https://*
