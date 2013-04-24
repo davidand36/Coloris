@@ -20,7 +20,7 @@ app.screens = app.screens || { };
 app.start = function( )
 {
     εδ.storage.setPrefix( "Coloris_" );
-    app.settings = εδ.storage.get( "settings" ) || app.settings || { };
+    εδ.storage.get( "settings", processSettings );
     setupResizeHandler( );
     app.showScreen( "splashScreen", app.loader.getResourceLoadProgress );
 
@@ -54,6 +54,13 @@ app.start = function( )
         $(window).on( 'orientationchange', handleResize );
 
         handleResize( );
+    }
+
+    //-------------------------------------------------------------------------
+
+    function processSettings( storedSettings )
+    {
+        app.settings = storedSettings || app.settings || { };
     }
 };
 
