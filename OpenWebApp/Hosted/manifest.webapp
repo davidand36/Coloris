@@ -1,0 +1,16 @@
+{
+    "name": "Coloris",
+    "description": "Color-based falling-blocks game",
+    "version": "0.8.0",
+    "launch_path": "/Coloris/index.html",
+    "icons": {
+        "128": "/Coloris/ColorisIcon128.png"
+    },
+    "developer": {
+        "name": "David M. Anderson",
+        "url": "http://EpsilonDelta.us"
+    },
+    "default_locale": "en",
+    "appcache_path": "/Coloris/manifest.appcache",
+    "installs_allowed_from": ["*"]
+}
