@@ -1,0 +1,16 @@
+{
+    "name": "Coloris",
+    "description": "Color-based falling-blocks game",
+    "manifest_version": 2,
+    "version": "0.8.0",
+    "app": {
+        "background": {
+            "scripts": [ "ChromeBackground.js" ]
+        }
+    },
+    "icons": {
+        "16": "ColorisIcon16.png",
+        "128": "ColorisIcon128.png"
+    },
+    "permissions": [ "storage" ]
+}

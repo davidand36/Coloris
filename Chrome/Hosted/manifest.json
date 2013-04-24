@@ -1,0 +1,15 @@
+{
+    "name": "Coloris",
+    "description": "Color-based falling-blocks game",
+    "manifest_version": 2,
+    "version": "0.8.0",
+    "app": {
+        "launch": {
+            "web_url": "http://EpsilonDelta/Coloris"
+        }
+    },
+    "icons": {
+        "128": "ColorisIcon128.png"
+    },
+    "offline_enabled": true
+}
