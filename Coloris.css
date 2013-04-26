@@ -23,6 +23,23 @@ body
     background-color: rgb( 42, 4, 74 );
 }
 
+
+#errorMessageDiv
+{
+    text-align: center;
+    color: #880000;
+    background-color: #DFDFFF;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1em;
+    border-color: #880000;
+    border-width: medium;
+    border-style: double;
+    padding: 1em;
+    display: none;
+}
+
+
 #game
 {
     position: relative;

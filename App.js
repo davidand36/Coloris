@@ -19,6 +19,7 @@ app.screens = app.screens || { };
 
 app.start = function( )
 {
+    εδ.errorHandler.setMessageElement( $("#errorMessageDiv") );
     εδ.storage.setPrefix( "Coloris_" );
     εδ.storage.get( "settings", processSettings );
     setupResizeHandler( );
@@ -28,19 +29,28 @@ app.start = function( )
 
     function setupResizeHandler( )
     {
-        var maxWidth = 800,
-            maxHeight = 800;
-
         //.....................................................................
 
         function handleResize( )
         {
-            var w = window.innerWidth,
-                h = window.innerHeight,
+            var maxWidth = 800,
+                maxHeight = 480,
+                mobile = ($.os && ($.os.phone || $.os.tablet)),
+                winWidth = window.innerWidth,
+                winHeight = window.innerHeight,
+                w, h,
                 newDims;
 
-            w = Math.min( w - 4, maxWidth );
-            h = Math.min( h - 4, maxHeight );
+            if ( mobile )
+            { //fill screen with a margin for error
+                w = winWidth - 4;
+                h = winHeight - 4;
+            }
+            else
+            {
+                w = Math.min( winWidth - 4, maxWidth );
+                h = Math.min( winHeight - 4, maxHeight );
+            }
             newDims = { width: w,
                         height: h
                       };
